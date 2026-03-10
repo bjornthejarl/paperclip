@@ -15,11 +15,14 @@ All environment variables that Paperclip uses for server configuration.
 | `PAPERCLIP_HOME` | `~/.paperclip` | Base directory for all Paperclip data |
 | `PAPERCLIP_INSTANCE_ID` | `default` | Instance identifier (for multiple local instances) |
 | `PAPERCLIP_DEPLOYMENT_MODE` | `local_trusted` | Runtime mode override |
+| `PAPERCLIP_DEPLOYMENT_EXPOSURE` | `private` | Exposure policy for `authenticated` mode: `private` or `public` |
+| `PAPERCLIP_PUBLIC_URL` | auto/undefined | Canonical external URL used for auth, callbacks, and allowed hostname derivation |
 
 ## Secrets
 
 | Variable | Default | Description |
 |----------|---------|-------------|
+| `BETTER_AUTH_SECRET` | (required in authenticated mode) | Session signing secret for Better Auth |
 | `PAPERCLIP_SECRETS_MASTER_KEY` | (from file) | 32-byte encryption key (base64/hex/raw) |
 | `PAPERCLIP_SECRETS_MASTER_KEY_FILE` | `~/.paperclip/.../secrets/master.key` | Path to key file |
 | `PAPERCLIP_SECRETS_STRICT_MODE` | `false` | Require secret refs for sensitive env vars |

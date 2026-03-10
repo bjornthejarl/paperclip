@@ -17,6 +17,7 @@ Defaults:
 
 - Host port: `3100`
 - Data directory: `./data/docker-paperclip`
+- Better Auth secret: `paperclip-dev-secret` (local quickstart only)
 
 Override with environment variables:
 
@@ -24,6 +25,22 @@ Override with environment variables:
 PAPERCLIP_PORT=3200 PAPERCLIP_DATA_DIR=./data/pc \
   docker compose -f docker-compose.quickstart.yml up --build
 ```
+
+## Public Cloud / Dokploy
+
+Use the root [`docker-compose.yml`](../../docker-compose.yml) for cloud deployment.
+
+Required environment variables:
+
+- `PAPERCLIP_PUBLIC_URL`: the exact external URL users will open, for example `https://paperclip.example.com`
+- `BETTER_AUTH_SECRET`: a long random secret for Better Auth session signing
+
+Recommended environment variables:
+
+- `PAPERCLIP_DEPLOYMENT_EXPOSURE=public`
+- `OPENAI_API_KEY` and `ANTHROPIC_API_KEY` if you want local Codex or Claude adapters inside the container
+
+The main Compose file now defaults to `authenticated/public`, which matches the deployment guidance for internet-facing hosting.
 
 ## Manual Docker Build
 
@@ -66,4 +83,4 @@ docker run --name paperclip \
   paperclip-local
 ```
 
-Without API keys, the app runs normally — adapter environment checks will surface missing prerequisites.
+Without API keys, the app runs normally - adapter environment checks will surface missing prerequisites.
